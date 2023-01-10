@@ -11,13 +11,12 @@ import { useRouter } from "next/router";
 const StyledBg = styled.div`
   width: 200px;
   height: 95vh;
-  padding: 5px;
 `;
 const ContainerLogoTitle = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 15px;
+  padding: 10px;
 `;
 
 const ContainerLogo = styled.div`
@@ -30,14 +29,19 @@ const StyledImage = styled(Image)`
   height: 100%;
 `;
 
+const StyledLinkTitle = styled(Link)`
+  text-decoration: none;
+  color: ${colors.grayScales.black};
+`;
+
 const Title = styled.h1`
-  margin: 0px;
+  margin: 10px 0px 20px 0px;
   text-align: center;
 `;
 
 const StyledNavLink = styled(Link)`
-  display: block;
-  margin: 5px;
+  display: flex;
+  padding: 10px;
   text-decoration: none;
   color: ${colors.grayScales.black};
   &:hover {
@@ -48,31 +52,44 @@ const StyledNavLink = styled(Link)`
   }
 `;
 
+const ContainerIcon = styled.div`
+  margin-left: 15px;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+`;
+
 const Navbar = () => {
   const router = useRouter();
 
   return (
     <StyledBg>
       <ContainerLogoTitle>
-        <Link href="/">
+        <StyledLinkTitle href="/">
           <ContainerLogo>
             <StyledImage src={logo} alt="logo WhealthHealth" />
           </ContainerLogo>
           <Title>HRnet</Title>
-        </Link>
+        </StyledLinkTitle>
       </ContainerLogoTitle>
       <nav className="navbar">
         <StyledNavLink
           href="/addemployee"
           className={router.pathname == "/addemployee" ? "active" : ""}
         >
-          Add new employee <MdAddCircleOutline />
+          Add new employee{" "}
+          <ContainerIcon>
+            <MdAddCircleOutline />
+          </ContainerIcon>
         </StyledNavLink>
         <StyledNavLink
           href="/showemployee"
           className={router.pathname == "/showemployee" ? "active" : ""}
         >
-          Show employees list <HiUserGroup />
+          Show employees list{" "}
+          <ContainerIcon>
+            <HiUserGroup />
+          </ContainerIcon>
         </StyledNavLink>
       </nav>
     </StyledBg>
