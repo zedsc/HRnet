@@ -1,6 +1,9 @@
 export const colors = {
-  primary: "#b9cc5f",
+  primary: "#cee076",
+  secondary: "#83aa17",
+  tertiary: "#6f9112",
   grayScales: {
+    gray500: "#adb5bd",
     gray800: "#343a40",
     gray900: "#212529",
     white: "#ffffff",
@@ -24,4 +27,22 @@ export const importFonts = {
 export const fonts = {
   base: "Source Sans Pro",
   monospace: "Menlo, Monaco, Consolas, monospace",
+};
+
+export const fontSize = {
+  "10": "0.625rem",
+  "11": "0.6875rem",
+  "12": "0.75rem",
+  "13": "0.813rem",
+  "14": "0.875rem",
+  "16": "1rem",
+  "18": "1.125rem",
+  "20": "1.25rem",
+  "24": "1.5rem",
+  "30": "1.875rem",
+  "32": "2rem",
+  "36": "2.25rem",
+  "48": "3rem",
+  "96": "6rem",
+  "288": "18rem",
 };
