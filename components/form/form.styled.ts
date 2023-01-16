@@ -1,0 +1,78 @@
+import styled from "styled-components";
+import { colors } from "../../styles/variables";
+
+/////// STYLED COMPONENTS //////
+export const FlexContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  @media (max-width: 600px) {
+    flex-direction: column;
+  }
+`;
+
+export const StyledDivColumn = styled.div`
+  display: flex;
+  flex-direction: colmun;
+  justify-content: space-around;
+`;
+
+export const StyledFieldset = styled.fieldset`
+  font-size: 16px;
+  padding-top: 10px;
+  margin: 0 5px 20px 5px;
+`;
+
+/////// MUI STYLES //////
+// Personnal informations - names & birthdate
+export const responsivePersonnal = {
+  // flex: { xs: "100%", sm: "1 / 2" },
+  mx: "0.5rem",
+  my: "0.5rem",
+  width: { xs: "100%", sm: 1 / 2 },
+};
+
+// Address
+export const responsiveStreetNb = {
+  width: { xs: "100%", sm: 1 / 4 },
+  mx: "0.5rem",
+  my: "0.5rem",
+};
+
+export const responsiveStreet = {
+  width: { xs: "100%", sm: 3 / 4 },
+  mx: "0.5rem",
+  my: "0.5rem",
+};
+
+export const responsiveCityState = {
+  width: { xs: "100%", sm: 2 / 5 },
+  mx: "0.5rem",
+  my: "0.5rem",
+};
+
+export const responsiveZipcode = {
+  width: { xs: "100%", sm: 1 / 5 },
+  mx: "0.5rem",
+  my: "0.5rem",
+};
+
+// Company
+export const responsiveDept = {
+  width: { xs: "100%", sm: 2 / 3 },
+  mx: "0.5rem",
+  my: "0.5rem",
+};
+
+export const responsiveStardate = {
+  width: { xs: "100%", sm: 1 / 3 },
+  mx: "0.5rem",
+  my: "0.5rem",
+};
+
+// Button
+export const buttonStyle = {
+  ":hover": { bgcolor: colors.tertiary },
+  bgcolor: colors.secondary,
+  my: "1rem",
+};
