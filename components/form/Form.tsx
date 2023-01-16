@@ -1,37 +1,30 @@
 import React from "react";
-import Box from "@mui/material/Box";
 import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
 import TextField from "@mui/material/TextField";
+import { Button } from "@mui/material";
 import { departments, states } from "./formDatas";
-import styled from "styled-components";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { Dayjs } from "dayjs";
-import { Button } from "@mui/material";
-import { Form, Formik, useFormik, Field } from "formik";
+// import "dayjs/locale/fr";
+import { Form, Formik } from "formik";
 import { validationSchema } from "./formValidation";
 import { useDispatch } from "react-redux/es/exports";
-// import "dayjs/locale/fr";
 import { addEmployee } from "../../store/employee.slice";
-import { colors } from "../../styles/variables";
-
-const FlexContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;
-
-const StyledDiv = styled.div`
-  display: flex;
-  justify-content: space-around;
-`;
-
-const StyledDivColum = styled.div`
-  display: flex;
-  flex-direction: colmun;
-  justify-content: space-around;
-`;
+import {
+  responsivePersonnal,
+  responsiveStreetNb,
+  responsiveStreet,
+  responsiveCityState,
+  responsiveZipcode,
+  responsiveDept,
+  responsiveStardate,
+  FlexContainer,
+  StyledDivColumn,
+  StyledFieldset,
+  buttonStyle,
+} from "./form.styled";
 
 const FormAddEmployee = () => {
   // const [locale, setLocale] = React.useState("fr");
@@ -51,7 +44,7 @@ const FormAddEmployee = () => {
   const departmentInput = React.useRef<HTMLInputElement | null>(null);
   const startdateInput = React.useRef<HTMLInputElement | null>(null);
 
-  interface IFormCredentilas {
+  interface IFormCredentials {
     id: string;
     col1: string;
     col2: string;
@@ -61,7 +54,7 @@ const FormAddEmployee = () => {
     col6: string;
   }
 
-  const formCredentials: IFormCredentilas = {
+  const formCredentials: IFormCredentials = {
     id: Date.now() + "" + zipcodeInput?.current?.value,
     col1: firstNameInput?.current?.value + " " + lastNameInput?.current?.value,
     col2: birthdayInput?.current?.value!,
@@ -111,9 +104,9 @@ const FormAddEmployee = () => {
           isSubmitting,
         }) => (
           <Form onSubmit={handleSubmit}>
-            <fieldset>
+            <StyledFieldset>
               <legend>Personnal informations</legend>
-              <StyledDiv>
+              <FlexContainer>
                 <TextField
                   id="firstName"
                   name="firstName"
@@ -125,7 +118,8 @@ const FormAddEmployee = () => {
                   error={touched.firstName && Boolean(errors.firstName)}
                   helperText={touched.firstName && errors.firstName}
                   inputRef={firstNameInput}
-                  sx={{ width: 1 / 2, mx: "0.5rem", my: "0.5rem" }}
+                  //sx={{ width: 1 / 2, mx: "0.5rem", my: "0.5rem" }}
+                  sx={responsivePersonnal}
                 />
                 <TextField
                   id="lastName"
@@ -138,9 +132,10 @@ const FormAddEmployee = () => {
                   error={touched.lastName && Boolean(errors.lastName)}
                   helperText={touched.lastName && errors.lastName}
                   inputRef={lastNameInput}
-                  sx={{ width: 1 / 2, mx: "0.5rem", my: "0.5rem" }}
+                  //sx={{ width: 1 / 2, mx: "0.5rem", my: "0.5rem" }}
+                  sx={responsivePersonnal}
                 />
-              </StyledDiv>
+              </FlexContainer>
               <LocalizationProvider
                 dateAdapter={AdapterDayjs}
                 // adapterLocale={locale}
@@ -149,30 +144,34 @@ const FormAddEmployee = () => {
                   label="Birthdate"
                   value={values.birthdate}
                   inputRef={birthdayInput}
-                  onChange={(newValue) => {
-                    setFieldValue("birthdate", newValue, true);
-                    setBirthdate(newValue);
+                  onChange={(newBirthdate) => {
+                    setBirthdate(newBirthdate);
+                    setFieldValue("birthdate", newBirthdate, true);
+                    console.log(newBirthdate, "la nouvelle birthdate");
+                    console.log(birthdate, "birthdate de setBirthdate");
+                    console.log(values.birthdate, "birthdate de value Formik");
                   }}
                   PopperProps={{
                     placement: "bottom-end",
                   }}
                   renderInput={(params) => (
                     <TextField
+                      {...params}
                       id="birthdate"
                       name="birthdate"
                       onBlur={handleBlur}
-                      {...params}
                       error={touched.birthdate && Boolean(errors.birthdate)}
                       helperText={touched.birthdate && errors.birthdate}
-                      sx={{ width: 1 / 2, mx: "0.5rem", my: "0.5rem" }}
+                      // sx={{ width: 1 / 2, mx: "0.5rem", my: "0.5rem" }}
+                      sx={responsivePersonnal}
                     />
                   )}
                 />
               </LocalizationProvider>
-            </fieldset>
-            <fieldset>
+            </StyledFieldset>
+            <StyledFieldset>
               <legend>Address</legend>
-              <StyledDiv>
+              <FlexContainer>
                 <TextField
                   id="streetNumber"
                   name="streetNumber"
@@ -184,7 +183,7 @@ const FormAddEmployee = () => {
                   error={touched.streetNumber && Boolean(errors.streetNumber)}
                   helperText={touched.streetNumber && errors.streetNumber}
                   inputRef={streetNbInput}
-                  sx={{ width: 1 / 4, mx: "0.5rem", my: "0.5rem" }}
+                  sx={responsiveStreetNb}
                 />
                 <TextField
                   id="street"
@@ -197,9 +196,9 @@ const FormAddEmployee = () => {
                   error={touched.street && Boolean(errors.street)}
                   helperText={touched.street && errors.street}
                   inputRef={streetInput}
-                  sx={{ width: 3 / 4, mx: "0.5rem", my: "0.5rem" }}
+                  sx={responsiveStreet}
                 />
-              </StyledDiv>
+              </FlexContainer>
               <FlexContainer>
                 <TextField
                   id="city"
@@ -212,7 +211,7 @@ const FormAddEmployee = () => {
                   error={touched.city && Boolean(errors.city)}
                   helperText={touched.city && errors.city}
                   inputRef={cityInput}
-                  sx={{ width: 2 / 5, mx: "0.5rem", my: "0.5rem" }}
+                  sx={responsiveCityState}
                 />
                 {/* <FormControl fullWidth> */}
                 <TextField
@@ -227,7 +226,7 @@ const FormAddEmployee = () => {
                   helperText={touched.state ? errors.state : ""}
                   error={touched.state && Boolean(errors.state)}
                   inputRef={stateInput}
-                  sx={{ width: 2 / 5, mx: "0.5rem", my: "0.5rem" }}
+                  sx={responsiveCityState}
                 >
                   {states.map((state, index) => (
                     <MenuItem key={index} value={state.abbreviation}>
@@ -235,7 +234,7 @@ const FormAddEmployee = () => {
                     </MenuItem>
                   ))}
                 </TextField>
-                {/* </FormControl> */}
+                {/* </FormControl>  */}
                 <TextField
                   id="zipcode"
                   name="zipcode"
@@ -247,11 +246,11 @@ const FormAddEmployee = () => {
                   error={touched.zipcode && Boolean(errors.zipcode)}
                   helperText={touched.zipcode && errors.zipcode}
                   inputRef={zipcodeInput}
-                  sx={{ width: 1 / 5, mx: "0.5rem", my: "0.5rem" }}
+                  sx={responsiveZipcode}
                 />
               </FlexContainer>
-            </fieldset>
-            <fieldset>
+            </StyledFieldset>
+            <StyledFieldset>
               <legend>Company informations</legend>
               <FlexContainer>
                 {/* <FormControl fullWidth> */}
@@ -267,7 +266,7 @@ const FormAddEmployee = () => {
                   helperText={touched.department ? errors.department : ""}
                   error={touched.department && Boolean(errors.department)}
                   inputRef={departmentInput}
-                  sx={{ width: 2 / 3, mx: "0.5rem", my: "0.5rem" }}
+                  sx={responsiveDept}
                 >
                   {departments.map((department, index) => (
                     <MenuItem key={index} value={department.name}>
@@ -276,43 +275,47 @@ const FormAddEmployee = () => {
                   ))}
                 </TextField>
                 {/* </FormControl> */}
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                <LocalizationProvider
+                  dateAdapter={AdapterDayjs}
+                  // adapterLocale={locale}
+                >
                   <DatePicker
-                    label="Start date"
+                    label="Startdate"
                     value={values.startdate}
                     inputRef={startdateInput}
-                    onChange={(newValue) => {
-                      setFieldValue("startdate", newValue, true);
-                      setStartdate(newValue);
+                    onChange={(newStartdate) => {
+                      setStartdate(newStartdate);
+                      setFieldValue("startdate", newStartdate, true);
+                      console.log(newStartdate, "la nouvelle startdate");
+                      console.log(startdate, "startdate de setStardate");
+                      console.log(
+                        values.startdate,
+                        "startdate de value Formik"
+                      );
+                    }}
+                    PopperProps={{
+                      placement: "bottom-end",
                     }}
                     renderInput={(params) => (
                       <TextField
+                        {...params}
                         id="startdate"
                         name="startdate"
                         onBlur={handleBlur}
-                        {...params}
                         error={touched.startdate && Boolean(errors.startdate)}
                         helperText={touched.startdate && errors.startdate}
-                        sx={{ width: 1 / 3, mx: "0.5rem", my: "0.5rem" }}
+                        sx={responsiveStardate}
                       />
                     )}
                   />
                 </LocalizationProvider>
               </FlexContainer>
-            </fieldset>
-            <StyledDivColum>
-              <Button
-                type="submit"
-                variant="contained"
-                sx={{
-                  ":hover": { bgcolor: colors.tertiary },
-                  bgcolor: colors.secondary,
-                  my: "1rem",
-                }}
-              >
+            </StyledFieldset>
+            <StyledDivColumn>
+              <Button type="submit" variant="contained" sx={buttonStyle}>
                 Create new employee
               </Button>
-            </StyledDivColum>
+            </StyledDivColumn>
           </Form>
         )}
       </Formik>
