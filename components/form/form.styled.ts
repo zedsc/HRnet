@@ -29,43 +29,44 @@ export const responsivePersonnal = {
   // flex: { xs: "100%", sm: "1 / 2" },
   mx: "0.5rem",
   my: "0.5rem",
-  width: { xs: "100%", sm: 1 / 2 },
+  //width: { xs: "100%", sm: 1 / 2 },
+  width: { xs: "calc(100% - 20px)", sm: 1 / 2 },
 };
 
 // Address
 export const responsiveStreetNb = {
-  width: { xs: "100%", sm: 1 / 4 },
+  width: { xs: "calc(100% - 20px)", sm: 1 / 4 },
   mx: "0.5rem",
   my: "0.5rem",
 };
 
 export const responsiveStreet = {
-  width: { xs: "100%", sm: 3 / 4 },
+  width: { xs: "calc(100% - 20px)", sm: 3 / 4 },
   mx: "0.5rem",
   my: "0.5rem",
 };
 
 export const responsiveCityState = {
-  width: { xs: "100%", sm: 2 / 5 },
+  width: { xs: "calc(100% - 20px)", sm: 2 / 5 },
   mx: "0.5rem",
   my: "0.5rem",
 };
 
 export const responsiveZipcode = {
-  width: { xs: "100%", sm: 1 / 5 },
+  width: { xs: "calc(100% - 20px)", sm: 1 / 5 },
   mx: "0.5rem",
   my: "0.5rem",
 };
 
 // Company
 export const responsiveDept = {
-  width: { xs: "100%", sm: 2 / 3 },
+  width: { xs: "calc(100% - 20px)", sm: 2 / 3 },
   mx: "0.5rem",
   my: "0.5rem",
 };
 
 export const responsiveStardate = {
-  width: { xs: "100%", sm: 1 / 3 },
+  width: { xs: "calc(100% - 20px)", sm: 1 / 3 },
   mx: "0.5rem",
   my: "0.5rem",
 };
