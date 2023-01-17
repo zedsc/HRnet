@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import Meta from "../components/Meta";
-import EnhancedTable from "../components/Table";
 import TableDataGrid from "../components/TableDataGrid";
 import { borderRadius, colors, shadow } from "../styles/variables";
 
@@ -25,7 +24,6 @@ const showemployee = () => {
     <StyledBg>
       <Meta title={"Current employees"} />
       <Title>Current employees</Title>
-      {/* <EnhancedTable /> */}
       <TableDataGrid />
     </StyledBg>
   );
