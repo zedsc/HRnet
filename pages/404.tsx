@@ -19,7 +19,7 @@ const Custom404 = () => {
   return (
     <ContainerTitle>
       <StyledTitle>
-        Sorry ! The page you are looking for doesn't exist 😢
+        Sorry! The page you are looking for doesn{"'"}t exist 😢
       </StyledTitle>
     </ContainerTitle>
   );
