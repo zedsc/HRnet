@@ -7,10 +7,10 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { Dayjs } from "dayjs";
+import dayjs from "dayjs";
 // import "dayjs/locale/fr";
 import { Form, Formik } from "formik";
 import { validationSchema } from "./formValidation";
-import { useDispatch } from "react-redux/es/exports";
 import { addEmployee } from "../../store/employee.slice";
 import {
   responsivePersonnal,
@@ -25,12 +25,13 @@ import {
   StyledFieldset,
   buttonStyle,
 } from "./form.styled";
+import { useAppDispatch } from "../../store/hooks";
 
 const FormAddEmployee = () => {
   // const [locale, setLocale] = React.useState("fr");
   const [birthdate, setBirthdate] = React.useState<Dayjs | null>(null);
   const [startdate, setStartdate] = React.useState<Dayjs | null>(null);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   //Targetting inputs to get values
   const firstNameInput = React.useRef<HTMLInputElement | null>(null);
@@ -55,7 +56,7 @@ const FormAddEmployee = () => {
   }
 
   const formCredentials: IFormCredentials = {
-    id: Date.now() + "" + zipcodeInput?.current?.value,
+    id: Math.floor(Math.random() * 9999) + "" + zipcodeInput?.current?.value,
     col1: firstNameInput?.current?.value + " " + lastNameInput?.current?.value,
     col2: birthdayInput?.current?.value!,
     col3:
@@ -68,7 +69,7 @@ const FormAddEmployee = () => {
       zipcodeInput?.current?.value,
     col4: stateInput?.current?.value!,
     col5: departmentInput?.current?.value!,
-    col6: startdateInput?.current?.value!,
+    col6: dayjs(startdate).format("MM/DD/YYYY"),
   };
 
   return (
@@ -118,7 +119,6 @@ const FormAddEmployee = () => {
                   error={touched.firstName && Boolean(errors.firstName)}
                   helperText={touched.firstName && errors.firstName}
                   inputRef={firstNameInput}
-                  //sx={{ width: 1 / 2, mx: "0.5rem", my: "0.5rem" }}
                   sx={responsivePersonnal}
                 />
                 <TextField
@@ -132,7 +132,6 @@ const FormAddEmployee = () => {
                   error={touched.lastName && Boolean(errors.lastName)}
                   helperText={touched.lastName && errors.lastName}
                   inputRef={lastNameInput}
-                  //sx={{ width: 1 / 2, mx: "0.5rem", my: "0.5rem" }}
                   sx={responsivePersonnal}
                 />
               </FlexContainer>
@@ -151,9 +150,6 @@ const FormAddEmployee = () => {
                     console.log(birthdate, "birthdate de setBirthdate");
                     console.log(values.birthdate, "birthdate de value Formik");
                   }}
-                  PopperProps={{
-                    placement: "bottom-end",
-                  }}
                   renderInput={(params) => (
                     <TextField
                       {...params}
@@ -162,7 +158,6 @@ const FormAddEmployee = () => {
                       onBlur={handleBlur}
                       error={touched.birthdate && Boolean(errors.birthdate)}
                       helperText={touched.birthdate && errors.birthdate}
-                      // sx={{ width: 1 / 2, mx: "0.5rem", my: "0.5rem" }}
                       sx={responsivePersonnal}
                     />
                   )}
@@ -253,7 +248,6 @@ const FormAddEmployee = () => {
             <StyledFieldset>
               <legend>Company informations</legend>
               <FlexContainer>
-                {/* <FormControl fullWidth> */}
                 <TextField
                   select
                   id="department"
@@ -274,14 +268,13 @@ const FormAddEmployee = () => {
                     </MenuItem>
                   ))}
                 </TextField>
-                {/* </FormControl> */}
                 <LocalizationProvider
                   dateAdapter={AdapterDayjs}
                   // adapterLocale={locale}
                 >
                   <DatePicker
                     label="Startdate"
-                    value={values.startdate}
+                    value={startdate}
                     inputRef={startdateInput}
                     onChange={(newStartdate) => {
                       setStartdate(newStartdate);
@@ -293,14 +286,12 @@ const FormAddEmployee = () => {
                         "startdate de value Formik"
                       );
                     }}
-                    PopperProps={{
-                      placement: "bottom-end",
-                    }}
                     renderInput={(params) => (
                       <TextField
                         {...params}
                         id="startdate"
                         name="startdate"
+                        value={startdate}
                         onBlur={handleBlur}
                         error={touched.startdate && Boolean(errors.startdate)}
                         helperText={touched.startdate && errors.startdate}
