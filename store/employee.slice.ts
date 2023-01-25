@@ -1,7 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { RootState } from "./store";
-
-interface Employee {
+import { AppState } from "./store";
+export interface Employee {
   id: string;
   col1: string;
   col2: string;
@@ -40,6 +39,6 @@ export const employeeSlice = createSlice({
 });
 
 export const { addEmployee } = employeeSlice.actions;
-export const selectEmployeesList = (state: RootState) =>
+export const selectEmployeesList = (state: AppState) =>
   state.employee.employeesList;
 export default employeeSlice.reducer;
