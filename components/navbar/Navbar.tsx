@@ -44,7 +44,7 @@ const Navbar = () => {
       <ContainerLogoTitle>
         <StyledLinkTitle href="/">
           <ContainerLogo>
-            <StyledImage src={logo} alt="logo WhealthHealth" />
+            <StyledImage src={logo} alt="logo WhealthHealth" priority />
           </ContainerLogo>
           <Title>HRnet</Title>
         </StyledLinkTitle>
@@ -74,7 +74,7 @@ const Navbar = () => {
     <StyledBg>
       <Link href="/">
         <SmallContainerLogo>
-          <StyledImage src={logo} alt="logo WhealthHealth" />
+          <StyledImage src={logo} alt="logo WhealthHealth" priority />
         </SmallContainerLogo>
       </Link>
       <nav>
