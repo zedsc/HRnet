@@ -1,8 +1,12 @@
 import "../styles/typo.import.scss";
+import { Provider } from "react-redux";
 import type { AppProps } from "next/app";
 import styled from "styled-components";
 import Layout from "../components/Layout";
 import { borderRadius, fonts, shadow } from "../styles/variables";
+import { debounce } from "debounce";
+import { saveState } from "../store/browser-storage";
+import { store } from "../store/store";
 
 const StyledBg = styled.div`
   display: flex;
@@ -14,12 +18,24 @@ const StyledBg = styled.div`
   font-family: ${fonts.base};
 `;
 
-export default function App({ Component, pageProps }: AppProps) {
+//Saving the state to the browser storage
+store.subscribe(
+  debounce(() => {
+    //delays the execution of the function
+    saveState(store.getState());
+  }, 800)
+);
+
+const App = ({ Component, pageProps }: AppProps) => {
   return (
-    <StyledBg>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
-    </StyledBg>
+    <Provider store={store}>
+      <StyledBg>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </StyledBg>
+    </Provider>
   );
-}
+};
+
+export default App;
