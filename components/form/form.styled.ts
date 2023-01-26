@@ -1,3 +1,4 @@
+import Link from "next/link";
 import styled from "styled-components";
 import { colors } from "../../styles/variables";
 
@@ -21,6 +22,14 @@ export const StyledFieldset = styled.fieldset`
   font-size: 16px;
   padding-top: 10px;
   margin: 0 5px 20px 5px;
+`;
+
+export const StyledLinkModal = styled(Link)`
+  text-decoration: none;
+  color: ${colors.grayScales.white};
+  &:visited {
+    color: ${colors.grayScales.white};
+  }
 `;
 
 /////// MUI STYLES //////

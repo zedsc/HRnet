@@ -12,6 +12,8 @@ import dayjs from "dayjs";
 import { Form, Formik } from "formik";
 import { validationSchema } from "./formValidation";
 import { addEmployee } from "../../store/employee.slice";
+import { Modal } from "@zious/react-typescript-modal";
+import { useAppDispatch } from "../../store/hooks";
 import {
   responsivePersonnal,
   responsiveStreetNb,
@@ -24,14 +26,17 @@ import {
   StyledDivColumn,
   StyledFieldset,
   buttonStyle,
+  StyledLinkModal,
 } from "./form.styled";
-import { useAppDispatch } from "../../store/hooks";
 
 const FormAddEmployee = () => {
   // const [locale, setLocale] = React.useState("fr");
   const [birthdate, setBirthdate] = React.useState<Dayjs | null>(null);
   const [startdate, setStartdate] = React.useState<Dayjs | null>(null);
   const dispatch = useAppDispatch();
+
+  //Modal
+  const [show, setShow] = React.useState<boolean>();
 
   //Targetting inputs to get values
   const firstNameInput = React.useRef<HTMLInputElement | null>(null);
@@ -74,6 +79,16 @@ const FormAddEmployee = () => {
 
   return (
     <div>
+      <Modal
+        showModal={show}
+        title="Confirmation employee creation"
+        content="Employee successfully created"
+        btnContent={
+          <StyledLinkModal href="/showemployee">Next ➡ </StyledLinkModal>
+        }
+        hideModal={() => setShow(false)}
+        srOnly={true}
+      />
       <Formik
         initialValues={{
           firstName: "",
@@ -88,10 +103,9 @@ const FormAddEmployee = () => {
           startdate: startdate,
         }}
         validationSchema={validationSchema}
-        onSubmit={(values) => {
-          alert(JSON.stringify(values, null, 2));
-          console.log(formCredentials);
+        onSubmit={() => {
           dispatch(addEmployee(formCredentials));
+          setShow(true);
         }}
       >
         {({
@@ -146,9 +160,6 @@ const FormAddEmployee = () => {
                   onChange={(newBirthdate) => {
                     setBirthdate(newBirthdate);
                     setFieldValue("birthdate", newBirthdate, true);
-                    console.log(newBirthdate, "la nouvelle birthdate");
-                    console.log(birthdate, "birthdate de setBirthdate");
-                    console.log(values.birthdate, "birthdate de value Formik");
                   }}
                   renderInput={(params) => (
                     <TextField
@@ -279,12 +290,6 @@ const FormAddEmployee = () => {
                     onChange={(newStartdate) => {
                       setStartdate(newStartdate);
                       setFieldValue("startdate", newStartdate, true);
-                      console.log(newStartdate, "la nouvelle startdate");
-                      console.log(startdate, "startdate de setStardate");
-                      console.log(
-                        values.startdate,
-                        "startdate de value Formik"
-                      );
                     }}
                     renderInput={(params) => (
                       <TextField
