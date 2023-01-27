@@ -19,7 +19,7 @@ const Title = styled.h2`
   margin: 20px 0px 40px 15px;
 `;
 
-const showemployee = () => {
+const Showemployee = () => {
   return (
     <StyledBg>
       <Meta title={"Current employees"} />
@@ -29,4 +29,4 @@ const showemployee = () => {
   );
 };
 
-export default showemployee;
+export default Showemployee;

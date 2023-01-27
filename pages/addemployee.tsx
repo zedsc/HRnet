@@ -10,16 +10,16 @@ const StyledBg = styled.div`
   background-color: ${colors.grayScales.white};
   margin: auto;
   margin-top: 20px;
-  overflow: hidden;
+  overflow: auto;
   border-radius: ${borderRadius.tenpx};
   box-shadow: ${shadow.primary};
 `;
 
 const Title = styled.h2`
-  margin: 0px;
+  margin: 20px 0px 40px 15px;
 `;
 
-const addemployee = () => {
+const Addemployee = () => {
   return (
     <StyledBg>
       <Meta title={"Add an employee"} />
@@ -29,4 +29,4 @@ const addemployee = () => {
   );
 };
 
-export default addemployee;
+export default Addemployee;
