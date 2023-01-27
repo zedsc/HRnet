@@ -1,16 +1,12 @@
 import * as React from "react";
-import { useEffect } from "react";
 import {
   DataGrid,
   GridRowsProp,
   GridColDef,
   GridToolbar,
 } from "@mui/x-data-grid";
-import { useSelector } from "react-redux/es/hooks/useSelector";
-import { TypedUseSelectorHook } from "react-redux";
-import { RootState } from "../store/store";
-//import styled from "styled-components";
 import { selectEmployeesList } from "../store/employee.slice";
+import { useAppSelector } from "../store/hooks";
 
 // const rows: GridRowsProp = [];
 
@@ -66,9 +62,8 @@ const columns: GridColDef[] = [
 ];
 
 const TableDataGrid = () => {
-  const useTypedSelector: TypedUseSelectorHook<RootState> = useSelector;
   const [pageSize, setPageSize] = React.useState<number>(10);
-  const employeesArray = useTypedSelector(selectEmployeesList);
+  const employeesArray = useAppSelector(selectEmployeesList);
   const rows: GridRowsProp = employeesArray;
 
   return (
