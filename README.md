@@ -1,34 +1,68 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+![LogoWealthHealth](public/logo_txt.png)
 
-## Getting Started
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+![Redux](https://img.shields.io/badge/Redux-593D88?style=for-the-badge&logo=redux&logoColor=white)
+![StyledComponents](https://img.shields.io/badge/styled--components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white)
+![MaterialUI](https://img.shields.io/badge/Material--UI-0081CB?style=for-the-badge&logo=material-ui&logoColor=white)
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+Whealth Health is a large financial company which uses an internal web application called HRNet to manage employee records. This application is old and uses jQuery on the front end, which leads to massive bugs and increased internal complaints. The aim of this project is:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- to convert the existing base of the application to React with external libraries
+- to create a React component from a jQuery plugin
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+Project 14 of the OpenClassrooms [JavaScript React Developer](https://openclassrooms.com/fr/paths/516-developpeur-dapplication-javascript-react) training program.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+#### Overview
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Work in progress 🛠
 
-## Learn More
+#### Resources
 
-To learn more about Next.js, take a look at the following resources:
+[Existing project to convert](https://github.com/OpenClassrooms-Student-Center/P12_Front-end)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Installation
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+You need to have **[Node.js v16.15 or higher](https://nodejs.org/en/)** installed on your computer.
 
-## Deploy on Vercel
+- Install [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/) on your system
+- Clone or download the project
+- Install dependencies with `npm i` or `yarn`
+- Start the project with `npm run dev` or `yarn dev`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+#### Dependencies
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- [![React](https://img.shields.io/github/package-json/dependency-version/zedsc/HRnet/react)](https://reactjs.org/)
+- [![next](https://img.shields.io/github/package-json/dependency-version/zedsc/HRnet/next)](https://nextjs.org/)
+- [![TypeScript](https://img.shields.io/github/package-json/dependency-version/zedsc/HRnet/typescript)](https://www.typescriptlang.org/)
+- [![react-redux](https://img.shields.io/github/package-json/dependency-version/zedsc/HRnet/react-redux)](https://react-redux.js.org/)
+- [![redux-toolkit](https://img.shields.io/github/package-json/dependency-version/zedsc/HRnet/@reduxjs/toolkit)](https://redux-toolkit.js.org/)
+- [![styled-components](https://img.shields.io/github/package-json/dependency-version/zedsc/ArgentBank-front/styled-components)](https://styled-components.com/)
+- [![MUI/material](https://img.shields.io/github/package-json/dependency-version/zedsc/HRnet/@mui/material)](https://mui.com/)
+- [![Formik](https://img.shields.io/github/package-json/dependency-version/zedsc/HRnet/formik)](https://formik.org/)
+- [![Yup](https://img.shields.io/github/package-json/dependency-version/zedsc/HRnet/yup)](https://github.com/jquense/yup)
+
+## Built with
+
+[React](https://reactjs.org/)
+
+A JavaScript library for building user interfaces
+
+[Next.js](https://nextjs.org/)
+
+The React framework for the Web
+
+## License
+
+This project is project 14 out of 14 of OpenClassrooms [JavaScript React Developer](https://openclassrooms.com/fr/paths/516-developpeur-dapplication-javascript-react) training. While you can reuse the code, visual resources may not be free of right.
+
+---
+
+#### Skills & aim of the project
+
+- Redesign an application to reduce technical debt
+- Programming in JavaScript with functional programming
+- Deploy a front-end application
+- Analyze the performance of a web application
