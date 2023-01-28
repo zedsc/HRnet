@@ -13,7 +13,7 @@ export const store = configureStore({
   devTools: process.env.NODE_ENV !== "production",
   preloadedState: loadState(), //storing the previously persisted store
   middleware: (
-    getDefaultMiddleware //disable check to avoid console errors with stardate
+    getDefaultMiddleware //disable check to avoid console errors with startdate
   ) => getDefaultMiddleware({ serializableCheck: false }),
 });
 
