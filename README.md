@@ -17,7 +17,8 @@ Project 14 of the OpenClassrooms [JavaScript React Developer](https://openclassr
 
 #### Overview
 
-Work in progress 🛠
+👉 **[Live demo](https://h-rnet.vercel.app/)**
+👉 **[React component](https://www.npmjs.com/package/@zious/react-typescript-modal?activeTab=readme)**
 
 #### Resources
 
