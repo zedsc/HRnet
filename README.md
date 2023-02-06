@@ -8,7 +8,7 @@
 
 ---
 
-Whealth Health is a large financial company which uses an internal web application called HRNet to manage employee records. This application is old and uses jQuery on the front end, which leads to massive bugs and increased internal complaints. The aim of this project is:
+Wealth Health is a large financial company which uses an internal web application called HRNet to manage employee records. This application is old and uses jQuery on the front end, which leads to massive bugs and increased internal complaints. The aim of this project is:
 
 - to convert the existing base of the application to React with external libraries
 - to create a React component from a jQuery plugin
@@ -18,6 +18,7 @@ Project 14 of the OpenClassrooms [JavaScript React Developer](https://openclassr
 #### Overview
 
 👉 **[Live demo](https://h-rnet.vercel.app/)**
+
 👉 **[React component](https://www.npmjs.com/package/@zious/react-typescript-modal?activeTab=readme)**
 
 #### Resources
